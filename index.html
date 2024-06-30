@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrice Burger - A melhor hamburgueria Patrice</title>
+   
+    <link rel="stylesheet" type="text/css" href="https:
+    //cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .circular-img {
+            width: 8rem;
+            height: 8rem;
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+         
+        
+        .menu-img {
+            width: 7rem;
+            height: 7rem;
+            object-fit: cover;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .circular-img:hover, .menu-img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0.9;
+        }
+
+        .pulse {
+            animation: pulse 0.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            to {
+                transform: scale(1.1);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header style="background-image: url('./assets/bg.png'); background-size: cover; background-position: center; width: 100%; height: 420px;" class="flex justify-center items-center">
+        <div class="w-full h-full flex flex-col justify-center items-center">
+            <img src="./assets/hamb-1.png"
+                 alt="Logo PatriceBurger"
+                 class="circular-img rounded-full shadow-lg hover:scale-110 duration-100 mx-auto"
+            />
+            <h1 class="text-3xl mt-4 mb-2 font-bold text-white">Patrice Burger</h1>
+            <span class="text-white font-medium">Rua 18, B.Patrice Lumumba, Matola</span>
+
+            <div class="bg-green-600 px-4 py-1 rounded-lg mt-6" id="data-span">
+                <span class="text-white font-medium"> Seg a Dom - 10:00 às 21:00</span>
+            </div>
+        </div>
+    </header>
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
+        Conheça nosso menu
+    </h2>
+    
+    <!-- INICIO MENU -->
+    <div id="menu-hamburgers" class="flex flex-col justify-center space-y-6 gap-4 px-4">
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+            <!-- PRODUTO ITEM -->
+            <div class="flex items-center gap-4 bg-white rounded-lg shadow-lg p-4">
+                <img src="./assets/hamb-1.png"
+                     alt="Hamburger Smash"
+                     class="menu-img w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+                />
+                <div class="flex flex-col justify-between flex-grow">
+                    <div>
+                        <p class="font-bold text-lg">Hamburguer Smash</p>
+                        <p class="text-sm">Pão levinho de fermentação natural, Burger
+                            160g, queijo prato e maionese da casa.
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between mt-3">
+                        <p class="font-bold text-lg">120 MZN</p>
+                        <button 
+                            class="bg-green-600 text-white px-5 py-2 rounded-lg add-to-cart-btn"
+                            data-name="Hamburguer Smash"
+                            data-price="120"
+                        >
+                            <i class="fas fa-cart-plus text-lg"></i> 
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Segundo produto -->
+            <div class="flex items-center gap-4 bg-white rounded-lg shadow-lg p-4">
+                <img src="./assets/hamb-2.png"
+                alt="Hamburger Duplo"
+                class="menu-img w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+           />
+           <div class="flex flex-col justify-between flex-grow">
+               <div>
+                   <p class="font-bold text-lg">Hamburguer Duplo</p>
+                   <p class="text-sm">Pão levinho de fermentação natural, Burger
+                       160g, queijo prato e maionese da casa.
+                   </p>
+               </div>
+               <div class="flex items-center justify-between mt-3">
+                   <p class="font-bold text-lg">160 MZN</p>
+                   <button 
+                       class="bg-green-600 text-white px-5 py-2 rounded-lg add-to-cart-btn"
+                       data-name="Hamburguer Duplo"
+                       data-price="160"
+                   >
+                       <i class="fas fa-cart-plus text-lg"></i> 
+                   </button>
+               </div>
+           </div>
+       </div>
+
+       <!-- Terceiro item -->
+       <div class="flex items-center gap-4 bg-white rounded-lg shadow-lg p-4">
+           <img src="./assets/hamb-3.png"
+                alt="Hamburger XL"
+                class="menu-img w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+           />
+           <div class="flex flex-col justify-between flex-grow">
+               <div>
+                   <p class="font-bold text-lg">Hamburguer XL</p>
+                   <p class="text-sm">Pão levinho de fermentação natural, Burger
+                       160g, queijo prato e maionese da casa.
+                   </p>
+               </div>
+               <div class="flex items-center justify-between mt-3">
+                   <p class="font-bold text-lg">220 MZN</p>
+                   <button 
+                       class="bg-green-600 text-white px-5 py-2 rounded-lg add-to-cart-btn"
+                       data-name="Hamburguer XL"
+                       data-price="220"
+                   >
+                       <i class="fas fa-cart-plus text-lg"></i> 
+                   </button>
+               </div>
+           </div>
+       </div>
+       <!-- Quarto item -->
+       <div class="flex items-center gap-4 bg-white rounded-lg shadow-lg p-4">
+           <img src="./assets/hamb-4.png"
+                alt="Hamburger da Casa"
+                class="menu-img w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+           />
+           <div class="flex flex-col justify-between flex-grow">
+               <div>
+                   <p class="font-bold text-lg">Hamburguer da Casa</p>
+                   <p class="text-sm">Pão levinho de fermentação natural, Burger
+                       160g, queijo prato e maionese da casa.
+                   </p>
+               </div>
+               <div class="flex items-center justify-between mt-3">
+                   <p class="font-bold text-lg">150 MZN</p>
+                   <button 
+                       class="bg-green-600 text-white px-5 py-2 rounded-lg add-to-cart-btn"
+                       data-name="Hamburguer da Casa"
+                       data-price="150"
+                   >
+                       <i class="fas fa-cart-plus text-lg"></i> 
+                   </button>
+               </div>
+           </div>
+       </div>
+       
+   </main>
+   <div class="mx-auto max-w-7x1 px-2 my-2">
+       <h2 class="font-bold text-3xl">
+           Bebidas
+       </h2>
+   </div>
+
+   <!-- Div Bebidas -->
+   <div id="menu-bebidas" class="flex flex-col justify-center space-y-6 gap-4 px-4">
+       <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
+           <!-- Bebida 1 -->
+           <div class="flex items-center gap-4 bg-white rounded-lg shadow-lg p-4">
+               <img src="./assets/refri-1.png"
+                    alt="Coca lata"
+                    class="menu-img w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+               />
+               <div class="flex flex-col justify-between flex-grow">
+                   <div>
+                       <p class="font-bold text-lg">Coca lata</p>
+                   </div>
+                   <div class="flex items-center justify-between mt-3">
+                       <p class="font-bold text-lg">60 MZN</p>
+                       <button 
+                           class="bg-green-600 text-white px-5 py-2 rounded-lg add-to-cart-btn"
+                           data-name="Coca lata"
+                           data-price="60"
+                       >
+                           <i class="fas fa-cart-plus text-lg"></i> 
+                       </button>
+                   </div>
+               </div>
+           </div>
+           <!-- Bebida 2 -->
+           <div class="flex items-center gap-4 bg-white rounded-lg shadow-lg p-4">
+               <img src="./assets/refri-2.png"
+                    alt="Guarana"
+                    class="menu-img w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+               />
+               <div class="flex flex-col justify-between flex-grow">
+                   <div>
+                       <p class="font-bold text-lg">Guarana</p>
+                   </div>
+                   <div class="flex items-center justify-between mt-3">
+                       <p class="font-bold text-lg">85 MZN</p>
+                       <button 
+                           class="bg-green-600 text-white px-5 py-2 rounded-lg add-to-cart-btn"
+                           data-name="Guarana"
+                           data-price="85"
+                       >
+                           <i class="fas fa-cart-plus text-lg"></i> 
+                       </button>
+                   </div>
+               </div>
+           </div>
+       </main>
+   </div>
+</div>
+<!-- FIM MENU -->
+
+<!-- Modal carrinho -->
+<div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden " id="cart-modal">
+   <div class="bg-blue-300 p-5 rounded-md" style="width: 80%; max-width: 800px;">
+       <h2 class="text-center font-bold text-2xl mb-2">Meu carrinho</h2>
+       <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
+       <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
+       <p class="font-bold mt-4">Endereço de entrega</p>
+       <input type="text" placeholder="Digite seu endereço completo..." id="address" class="w-full border-2 p-2 rounded my-1" />
+       <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo!</p>
+       <div class="flex items-center justify-between mt-5">
+           <button id="close-modal-btn"class="bg-green-500 text-white px-4 py-1">Fechar</button>
+           <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1">Finalizar pedido</button>
+       </div>
+   </div>
+</div>
+<!-- FIM Modal carrinho -->
+
+<!-- Botão carrinho -->
+<footer class="w-full bg-red-500 py-2 fixed bottom-0 z-40 flex items-center justify-center">
+   <button class="flex items-center gap-2 text-white font-bold" id="cart-btn">
+       (<span id="cart-count">0</span>)
+       Ver meu carrinho
+       <i class="fas fa-shopping-cart text-lg text-white"></i>
+   </button>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
+
