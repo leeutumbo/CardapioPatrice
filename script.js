@@ -10,6 +10,7 @@ const cartCount = document.getElementById("cart-count");
 const addressInput = document.getElementById("address");
 const addressWarn = document.getElementById("address-warn");
 const spanItem = document.getElementById("data-span");
+const nameCliente=document.getElementById("nameCliente");
 
 let cart = [];
 
