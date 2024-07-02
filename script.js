@@ -10,7 +10,7 @@ const cartCount = document.getElementById("cart-count");
 const addressInput = document.getElementById("address");
 const addressWarn = document.getElementById("address-warn");
 const spanItem = document.getElementById("data-span");
-const nameCliente=document.getElementById("nameCliente");
+const nameCliente = document.getElementById("nameCliente");
 
 let cart = [];
 
@@ -103,6 +103,7 @@ function checkCheckoutAvailability() {
 // Evento para finalizar o pedido
 checkoutBtn.addEventListener("click", function () {
     const address = addressInput.value.trim();
+    const customerName = nameCliente.value.trim(); // Capturando o valor do nome do cliente
 
     if (cart.length === 0) {
         alert("Adicione itens ao carrinho antes de finalizar o pedido.");
@@ -125,20 +126,22 @@ checkoutBtn.addEventListener("click", function () {
         return;
     }
 
-    if (address === "") {
-        showAddressWarning();
+    if (address === "" || customerName === "") { // Verifica se o endereço ou o nome estão vazios
+        if (address === "") showAddressWarning();
+        if (customerName === "") showNameWarning(); // Mostra o aviso para o nome também
     } else {
         hideAddressWarning();
-        sendOrderToWhatsApp(address);
+        hideNameWarning(); // Esconde o aviso para o nome
+        sendOrderToWhatsApp(address, customerName); // Passa o nome do cliente para a função de envio
         resetCart();
     }
 });
 
 // Função para enviar o pedido via WhatsApp
-function sendOrderToWhatsApp(address) {
+function sendOrderToWhatsApp(address, customerName) {
     const phone = "842024060"; // Número de telefone para onde enviar o pedido
     const cartItems = cart.map(item => `${item.name} - Quantidade: ${item.quantity} - Preço: ${(item.price * item.quantity).toFixed(2)} MZN`).join("\n");
-    const message = `Pedido:\n${cartItems}\n\nTotal: ${cartTotal.textContent} MZN\n\nEndereço de entrega: ${address}`;
+    const message = `Nome do cliente: ${customerName}\nPedido:\n${cartItems}\n\nTotal: ${cartTotal.textContent} MZN\n\nEndereço de entrega: ${address}`;
     const encodedMessage = encodeURIComponent(message);
 
     // URL modificada para abrir a mensagem pronta no WhatsApp
@@ -202,10 +205,21 @@ function showAddressWarning() {
     applyShakeAnimation(addressInput);
 }
 
+// Função para mostrar aviso de nome
+function showNameWarning() {
+    nameCliente.style.border = "2px solid red"; // Destaca o campo do nome
+    applyShakeAnimation(nameCliente);
+}
+
 // Função para esconder aviso de endereço
 function hideAddressWarning() {
     addressWarn.style.display = "none";
     addressInput.classList.remove("border-red-500");
+}
+
+// Função para esconder aviso de nome
+function hideNameWarning() {
+    nameCliente.style.border = ""; // Remove o destaque do campo do nome
 }
 
 // Função para adicionar animação de shake
