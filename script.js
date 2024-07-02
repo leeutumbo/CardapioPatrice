@@ -1,5 +1,6 @@
 // Seleção dos elementos pelo ID
 const menu = document.getElementById("menu-hamburgers");
+const menuPizzas = document.getElementById("menuPizzas");
 const cartBtn = document.getElementById("cart-btn");
 const cartModal = document.getElementById("cart-modal");
 const cartItemsContainer = document.getElementById("cart-items");
@@ -14,12 +15,19 @@ const nameCliente = document.getElementById("nameCliente");
 
 let cart = [];
 
+
 // Evento para abrir o modal do carrinho
 cartBtn.addEventListener("click", function () {
     cartModal.style.display = "flex";
     displayCartItems();
     updateCartTotal();
+
+    const cartContent = document.getElementById("cart-content");
+    if (cartContent) {
+        cartContent.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
 });
+
 
 // Evento para fechar o modal do carrinho ao clicar fora dele
 cartModal.addEventListener("click", function (event) {
@@ -35,6 +43,19 @@ closeModalBtn.addEventListener("click", function () {
 
 // Evento para adicionar itens ao carrinho quando o botão é clicado
 menu.addEventListener("click", function (event) {
+    const parentButton = event.target.closest(".add-to-cart-btn");
+
+    if (parentButton) {
+        const name = parentButton.getAttribute("data-name");
+        const price = parseFloat(parentButton.getAttribute("data-price"));
+
+        addItemToCart(name, price);
+        updateCartCount();
+        displayCartItems();
+        checkCheckoutAvailability();
+    }
+});
+menuPizzas.addEventListener("click", function(event) {
     const parentButton = event.target.closest(".add-to-cart-btn");
 
     if (parentButton) {
